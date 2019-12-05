@@ -73,12 +73,34 @@ router.get('/:id/posts', validateUserId, (req, res) => {
 		});
 });
 
-router.delete('/:id', (req, res) => {
-	// do your magic!
+router.delete('/:id', validateUserId, (req, res) => {
+	db
+		.remove(req.params.id)
+		.then((count) => {
+			if (count > 0) {
+				res.status(200).json({ message: 'It has been removed.' });
+			} else {
+				res.status(400).json({ errorMessage: 'The post with this ID is not found.' });
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json({
+				errorMessage : 'Could not be removed.',
+			});
+		});
 });
 
 router.put('/:id', validateUser, validateUserId, (req, res) => {
-	db.update(req.body);
+	db
+		.update(req.params.id, req.body)
+		.then(() => {
+			res.status(200).json(req.body);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json({ errorMessage: 'Put update did not work' });
+		});
 });
 
 //custom middleware
