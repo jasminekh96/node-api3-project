@@ -37,9 +37,8 @@ router.post('/:id/posts', validatePost, validateUserId, (req, res) => {
 });
 
 router.get('/', (req, res) => {
-	console.log(req.query);
 	db
-		.get(req.query)
+		.get()
 		.then((users) => {
 			res.status(200).json(users);
 		})
@@ -127,7 +126,7 @@ function validateUserId(req, res, next) {
 	}
 }
 function validateUser(req, res, next) {
-	if (!req.body) {
+	if (!Object.entries(req.body).length) {
 		res.status(400).json({ message: 'missing required user data' });
 	} else if (!req.body.name) {
 		res.status(400).json({ message: 'missing required name field' });

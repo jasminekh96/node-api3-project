@@ -3,6 +3,7 @@ const express = require('express');
 const server = express();
 
 const userRouter = require('./users/userRouter');
+const postRouter = require('./posts/postRouter');
 //custom middleware
 
 function logger(req, res, next) {
@@ -18,5 +19,5 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/users', userRouter);
-
+server.use('/api/posts', postRouter);
 module.exports = server;
