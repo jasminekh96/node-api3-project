@@ -100,3 +100,16 @@ We have provided test data for the resources.
   - From the React application connect to the `/api/users` endpoint in the API and show the list of users.
   - Add functionality to show the details of a user, including their posts, when clicking a user name in the list. Use React Router to navigate to a `/users/:id` route to show the user details.
   - Add styling!
+
+
+
+ Mention two parts of Express that you learned about this week.
+- Express is used to build web applications and serve single page applications. As well as building REST web services (Representational State Transfer)
+ Describe Middleware?
+- Middleware adds extra functionality to the express framework including custom middleware which has error handling. Middleware makes code cleaner and more efficient by practically creating a variable that can be used throughout the code. 
+ Describe a Resource?
+- everything is a resource and is accessible with a unique URI. Resource occurs with HTTP. 
+ What can the API return to help clients know if a request was successful?
+- It can return a status code of 200. 
+ How can we partition our application into sub-applications?
+ - We can do this by using express routers to make it easier to maintain through multiple folders/files. 
